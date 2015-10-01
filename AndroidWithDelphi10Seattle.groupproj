@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{FB3EF823-B03F-4F6D-AB17-30251B3CBDDB}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Mobile\AppMobile.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="AppMobile">
+        <MSBuild Projects="Mobile\AppMobile.dproj"/>
+    </Target>
+    <Target Name="AppMobile:Clean">
+        <MSBuild Projects="Mobile\AppMobile.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="AppMobile:Make">
+        <MSBuild Projects="Mobile\AppMobile.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="AppMobile"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="AppMobile:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="AppMobile:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
